@@ -12,4 +12,9 @@ public class ControllerPrincipal {
     public String paginaprincipal(){
         return "VistaPrincipal";
     }
+
+    @GetMapping("/Sitios")
+    public String vistasitios(){
+        return "Sitios";
+    }
 }
