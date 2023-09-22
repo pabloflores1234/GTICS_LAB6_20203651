@@ -12,8 +12,36 @@
 </head>
 <body>
 <header th:insert="~{fragments/fragment_Navbar.html :: navbar}">
-
 </header>
+
+<div class="container">
+    <h2>Lista de Sitios</h2>
+    <div class="row">
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{/crearSitio}">Nuevo Sitio</a>
+    </div>
+    <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+    <table class="table table-sm">
+        <tr>
+            <th>Nombre</th>
+            <th>Locación</th>
+            <th>Fecha de instalación</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="sitio: ${listaSitios}">
+            <td th:text="${sitio.siteName}"></td>
+
+            <td th:text="${sitio.installationDate}"></td>
+            <td th:text="${sitio.latitude}"></td>
+            <td th:text="${sitio.longitude}"></td>
+
+            <td><a class="btn btn-primary" th:href="@{'/editarSitio?id=' + ${sitio.siteId}}">Editar</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/borrarSitio?id=' + ${sitio.siteId}}">Borrar</a></td>
+        </tr>
+    </table>
+</div>
 
 </body>
 </html>
